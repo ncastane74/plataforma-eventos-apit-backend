@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { EnvEventosVitacorasController } from './env-eventos-vitacoras.controller';
+import { EnvEventosBitacorasController } from './env-eventos-bitacoras.controller';
 
 describe('EnvEventosVitacorasController', () => {
-  let controller: EnvEventosVitacorasController;
+  let controller: EnvEventosBitacorasController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [EnvEventosVitacorasController],
+      controllers: [EnvEventosBitacorasController],
     }).compile();
 
-    controller = module.get<EnvEventosVitacorasController>(EnvEventosVitacorasController);
+    controller = module.get<EnvEventosBitacorasController>(EnvEventosBitacorasController);
   });
 
   it('should be defined', () => {

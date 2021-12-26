@@ -1,23 +1,23 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 
-@Controller('sec-operarios')
-export class SecOperariosController {
+@Controller('env-eventos-bitacoras')
+export class EnvEventosBitacorasController {
 
     @Get()
-    getOperarios(
+    getEventosBitacoras(
         @Query('limit') limit = 100,
         @Query('offset') offset = 0,
         @Query('brand') brand: string,
     ){
         return {
-            message: `Operarios limit=> ${limit} offset=> ${offset} brand=> ${brand}`
+            message: `Eventos Bitacora limit=> ${limit} offset=> ${offset} brand=> ${brand}`
         }
     }
 
-    @Get(':operacioId')
-    getOperacio(@Param('operacioId') productId: string) {
+    @Get(':eventoBitacoraId')
+    getEmpresaPonente(@Param('eventoBitacoraId') productId: string) {
       return {
-          message: `Operario ID ${productId}`
+        message: `Evento Bitacora ID ${productId}`
       }
     }
 
