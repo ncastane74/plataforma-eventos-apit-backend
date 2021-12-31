@@ -9,7 +9,9 @@ describe('ExtDepartamentosController', () => {
       controllers: [ExtDepartamentosController],
     }).compile();
 
-    controller = module.get<ExtDepartamentosController>(ExtDepartamentosController);
+    controller = module.get<ExtDepartamentosController>(
+      ExtDepartamentosController,
+    );
   });
 
   it('should be defined', () => {

@@ -9,7 +9,9 @@ describe('EnvEventosBitacorasService', () => {
       providers: [EnvEventosBitacorasService],
     }).compile();
 
-    service = module.get<EnvEventosBitacorasService>(EnvEventosBitacorasService);
+    service = module.get<EnvEventosBitacorasService>(
+      EnvEventosBitacorasService,
+    );
   });
 
   it('should be defined', () => {

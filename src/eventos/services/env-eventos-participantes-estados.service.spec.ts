@@ -9,7 +9,9 @@ describe('EnvEventosParticipantesEstadosService', () => {
       providers: [EnvEventosParticipantesEstadosService],
     }).compile();
 
-    service = module.get<EnvEventosParticipantesEstadosService>(EnvEventosParticipantesEstadosService);
+    service = module.get<EnvEventosParticipantesEstadosService>(
+      EnvEventosParticipantesEstadosService,
+    );
   });
 
   it('should be defined', () => {

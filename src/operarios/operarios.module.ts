@@ -11,7 +11,17 @@ import { SecOperariosService } from './services/sec-operarios.service';
 import { SecPerfilesService } from './services/sec-perfiles.service';
 
 @Module({
-    controllers: [ SecOperariosEstadosController, SecOperariosPerfilesController, SecOperariosController, SecPerfilesController ],
-    providers: [ SecOperariosEstadosService, SecOperariosPerfilesService, SecOperariosService, SecPerfilesService ],
+  controllers: [
+    SecOperariosEstadosController,
+    SecOperariosPerfilesController,
+    SecOperariosController,
+    SecPerfilesController,
+  ],
+  providers: [
+    SecOperariosEstadosService,
+    SecOperariosPerfilesService,
+    SecOperariosService,
+    SecPerfilesService,
+  ],
 })
 export class OperariosModule {}

@@ -1,5 +1,5 @@
 export class Departamentos {
-    id: number;
-    id_pais: number;
-    nombre: string
+  id: number;
+  id_pais: number;
+  nombre: string;
 }

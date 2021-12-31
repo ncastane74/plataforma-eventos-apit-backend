@@ -10,7 +10,17 @@ import { PerPersonasInstService } from './services/per-personas-inst.service';
 import { PerPersonasService } from './services/per-personas.service';
 
 @Module({
-    controllers: [ ExtInstitucionesController, ExtTipoDocumentosController, PerPersonasController, PerPersonasInstController ],
-    providers: [ ExtInstitucionesService, ExtTipoDocumentosService, PerPersonasInstService, PerPersonasService ],
+  controllers: [
+    ExtInstitucionesController,
+    ExtTipoDocumentosController,
+    PerPersonasController,
+    PerPersonasInstController,
+  ],
+  providers: [
+    ExtInstitucionesService,
+    ExtTipoDocumentosService,
+    PerPersonasInstService,
+    PerPersonasService,
+  ],
 })
 export class PersonasModule {}

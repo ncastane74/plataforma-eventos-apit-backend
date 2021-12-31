@@ -9,7 +9,9 @@ describe('PerPersonasInstController', () => {
       controllers: [PerPersonasInstController],
     }).compile();
 
-    controller = module.get<PerPersonasInstController>(PerPersonasInstController);
+    controller = module.get<PerPersonasInstController>(
+      PerPersonasInstController,
+    );
   });
 
   it('should be defined', () => {

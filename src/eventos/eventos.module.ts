@@ -12,7 +12,19 @@ import { EnvEventosService } from './services/env-eventos.service';
 import { EnvEventosBitacorasService } from './services/env-eventos-bitacoras.service';
 
 @Module({
-    controllers: [ EnvEventosParticipantesEstadosController, EnvEventosParticipantesController, EnvEventosController, EnvEventosBitacorasController, EnvEventosEstadosController ],
-    providers: [ EnvEventosEstadosService, EnvEventosParticipantesEstadosService, EnvEventosParticipantesService, EnvEventosService, EnvEventosBitacorasService ],
+  controllers: [
+    EnvEventosParticipantesEstadosController,
+    EnvEventosParticipantesController,
+    EnvEventosController,
+    EnvEventosBitacorasController,
+    EnvEventosEstadosController,
+  ],
+  providers: [
+    EnvEventosEstadosService,
+    EnvEventosParticipantesEstadosService,
+    EnvEventosParticipantesService,
+    EnvEventosService,
+    EnvEventosBitacorasService,
+  ],
 })
 export class EventosModule {}

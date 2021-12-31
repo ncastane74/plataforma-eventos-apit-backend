@@ -9,7 +9,9 @@ describe('SecOperariosPerfilesService', () => {
       providers: [SecOperariosPerfilesService],
     }).compile();
 
-    service = module.get<SecOperariosPerfilesService>(SecOperariosPerfilesService);
+    service = module.get<SecOperariosPerfilesService>(
+      SecOperariosPerfilesService,
+    );
   });
 
   it('should be defined', () => {

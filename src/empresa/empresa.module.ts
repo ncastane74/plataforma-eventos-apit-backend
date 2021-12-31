@@ -13,8 +13,19 @@ import { ExtDepartamentosService } from './services/ext-departamentos.service';
 import { ExtPaisesService } from './services/ext-paises.service';
 
 @Module({
-    controllers: [ EmpEmpresasPonentesController, EmpEmpresasController, ExtPaisesController, ExtDepartamentosController, ExtMunicipiosController ],
-    providers: [ EmpEmpresasPonentesService, EmpEmpresasService, ExtMunicipiosService, ExtDepartamentosService, ExtPaisesService ],
-
+  controllers: [
+    EmpEmpresasPonentesController,
+    EmpEmpresasController,
+    ExtPaisesController,
+    ExtDepartamentosController,
+    ExtMunicipiosController,
+  ],
+  providers: [
+    EmpEmpresasPonentesService,
+    EmpEmpresasService,
+    ExtMunicipiosService,
+    ExtDepartamentosService,
+    ExtPaisesService,
+  ],
 })
 export class EmpresaModule {}

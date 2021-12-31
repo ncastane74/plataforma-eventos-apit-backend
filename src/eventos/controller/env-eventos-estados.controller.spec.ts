@@ -9,7 +9,9 @@ describe('EnvEventosEstadosController', () => {
       controllers: [EnvEventosEstadosController],
     }).compile();
 
-    controller = module.get<EnvEventosEstadosController>(EnvEventosEstadosController);
+    controller = module.get<EnvEventosEstadosController>(
+      EnvEventosEstadosController,
+    );
   });
 
   it('should be defined', () => {

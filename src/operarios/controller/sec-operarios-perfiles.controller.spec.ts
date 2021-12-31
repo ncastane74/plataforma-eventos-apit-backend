@@ -9,7 +9,9 @@ describe('SecOperariosPerfilesController', () => {
       controllers: [SecOperariosPerfilesController],
     }).compile();
 
-    controller = module.get<SecOperariosPerfilesController>(SecOperariosPerfilesController);
+    controller = module.get<SecOperariosPerfilesController>(
+      SecOperariosPerfilesController,
+    );
   });
 
   it('should be defined', () => {
