@@ -1,7 +1,7 @@
 import { IsDate, IsInt, IsNotEmpty, IsString, IsUrl } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types'
+import { PartialType } from '@nestjs/swagger';
 
-export class Eventos {
+export class CreateEventos {
 
     @IsInt()
     @IsNotEmpty()
@@ -59,3 +59,5 @@ export class Eventos {
     @IsNotEmpty()
     f_modificacion: string;
 }
+
+export class UpdateEventos extends PartialType(CreateEventos) {}

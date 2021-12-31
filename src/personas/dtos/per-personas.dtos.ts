@@ -1,5 +1,5 @@
 import { IsEmail, IsInt, IsNotEmpty, IsString, IsUrl } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types'
+import { PartialType } from '@nestjs/swagger';
 
 export class CreatePersonas {
 
@@ -55,3 +55,5 @@ export class CreatePersonas {
     @IsNotEmpty()
     f_modificacion: string;
 }
+
+export class UpdatePersonas extends PartialType(CreatePersonas) {}
