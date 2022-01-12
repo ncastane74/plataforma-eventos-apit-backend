@@ -24,11 +24,11 @@ export class CreateEventosParticipantes {
 
   @IsString()
   @IsNotEmpty()
-  f_creacion: string;
+  f_creacion: Date;
 
   @IsString()
   @IsNotEmpty()
-  f_modificacion: string;
+  f_modificacion: Date;
 }
 
 export class UpdateEventosParticipantes extends PartialType(

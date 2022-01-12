@@ -4,51 +4,57 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
 } from '@nestjs/common';
 
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+
+import {
+  CreateEventosBitacoras,
+  UpdateEventosBitacoras,
+} from './../dtos/env-eventos-bitacoras.dtos';
+
+import { EnvEventosBitacorasService } from './../services/env-eventos-bitacoras.service';
+
+@ApiTags('Eventos Bitacora')
 @Controller('env-eventos-bitacoras')
 export class EnvEventosBitacorasController {
+  constructor(private envEventosBitacorasService: EnvEventosBitacorasService) {}
+
   @Get()
-  getEventosBitacoras(
+  @ApiOperation({ summary: 'Lista todos los registros de los eventos de la bitacora' })
+  getAll(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return {
-      message: `Eventos Bitacora limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
-    };
+    return this.envEventosBitacorasService.findAll();
   }
 
-  @Get(':eventoBitacoraId')
-  getEmpresaPonente(@Param('eventoBitacoraId') productId: string) {
-    return {
-      message: `Evento Bitacora ID ${productId}`,
-    };
+  @Get(':id')
+  @ApiOperation({ summary: 'Busca el evento de la bitacora por el ID' })
+  getOne(@Param('id', ParseIntPipe) id: number) {
+    return this.envEventosBitacorasService.findOne(id);
   }
 
   @Post()
-  create(@Body() payload: any) {
-    return {
-      message: 'Metodo de crear',
-      payload,
-    };
+  @ApiOperation({ summary: 'Crea evento en bitacora' })
+  create(@Body() payload: CreateEventosBitacoras) {
+    this.envEventosBitacorasService.create(payload);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any) {
-    return {
-      id,
-      payload,
-    };
+  @ApiOperation({ summary: 'Actualiza el evento bitacora' })
+  update(@Param('id') id: number, @Body() payload: UpdateEventosBitacoras) {
+    return this.envEventosBitacorasService.update(id, payload);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Elimana evento de la bitacora por su ID' })
   delete(@Param('id') id: number) {
-    return {
-      message: `ID elimnado ${id}`,
-    };
+    return this.envEventosBitacorasService.remove(id);
   }
 }

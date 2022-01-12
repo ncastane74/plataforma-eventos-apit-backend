@@ -28,11 +28,11 @@ export class CreateEventosEstados {
 
   @IsString()
   @IsNotEmpty()
-  f_creacion: string;
+  f_creacion: Date;
 
   @IsString()
   @IsNotEmpty()
-  f_modificacion: string;
+  f_modificacion: Date;
 }
 
 export class UpdateEventosEstados extends PartialType(CreateEventosEstados) {}

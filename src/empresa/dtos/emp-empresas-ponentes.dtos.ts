@@ -35,12 +35,12 @@ export class CreateEmpresasPonentesDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly f_creacion: string;
+  readonly f_creacion: Date;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly f_modificacion: string;
+  readonly f_modificacion: Date;
 }
 
 export class UpdateEmpresasPonentesDto extends PartialType(

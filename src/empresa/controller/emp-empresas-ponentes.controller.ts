@@ -27,8 +27,8 @@ export class EmpEmpresasPonentesController {
   constructor(private empEmpresasPonentesService: EmpEmpresasPonentesService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Lista los productos' })
-  getEmpresaPonentes(
+  @ApiOperation({ summary: 'Listado de empresas ponentes' })
+  getAll(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
@@ -37,22 +37,26 @@ export class EmpEmpresasPonentesController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Busca la empresa ponente por el ID' })
   @HttpCode(HttpStatus.ACCEPTED)
   getOne(@Param('id', ParseIntPipe) id: number) {
     return this.empEmpresasPonentesService.findOne(id);
   }
 
   @Post()
+  @ApiOperation({ summary: 'Crea empresas ponente' })
   create(@Body() payload: CreateEmpresasPonentesDto) {
     this.empEmpresasPonentesService.create(payload);
   }
 
   @Put(':id')
+  @ApiOperation({ summary: 'Actualiza la empresa ponentes' })
   update(@Param('id') id: number, @Body() payload: UpdateEmpresasPonentesDto) {
     return this.empEmpresasPonentesService.update(id, payload);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Elimana la empresa ponente por su ID' })
   delete(@Param('id') id: number) {
     return this.empEmpresasPonentesService.remove(id);
   }
