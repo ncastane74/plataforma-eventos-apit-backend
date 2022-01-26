@@ -11,19 +11,6 @@ import { EmpresasPonentes } from './../entities/emp-empresas-ponentes.entity';
 @Injectable()
 export class EmpEmpresasPonentesService {
   constructor(@InjectRepository(EmpresasPonentes) private empresasPonentesRepository: Repository<EmpresasPonentes>){}
-  //private counterId = 1;
-  //private empresasPonentes: EmpresasPonentes[] = [
-  //  {
-  //    id: 1,
-  //    id_persona: 2,
-  //    id_empresa: 3,
-  //    descripcion: 'Empresa Ponentes',
-  //    id_operario_creacion: 4,
-  //    id_operario_modificion: 5,
-  //    f_creacion: '2021-12-20 23:00:00',
-  //    f_modificacion: '2021-12-21 09:00:00',
-  //  },
-  //];
 
   findAll() {
     return this.empresasPonentesRepository.find();

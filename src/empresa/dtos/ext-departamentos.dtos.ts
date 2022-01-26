@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsPositive, IsString } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateDepartamentosDto {
@@ -7,7 +7,7 @@ export class CreateDepartamentosDto {
   @ApiProperty()
   readonly id: number;
 
-  @IsInt()
+  @IsPositive()
   @IsNotEmpty()
   @ApiProperty()
   readonly id_pais: number;

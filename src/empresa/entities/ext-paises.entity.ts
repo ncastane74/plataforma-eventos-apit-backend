@@ -18,6 +18,6 @@ export class Paises {
   })
   nombre: string;
 
-  @OneToMany(() => Departamentos, departamento => departamento.id_pais)
+  @OneToMany(() => Departamentos, (departamento) => departamento.pais)
   departamentos: Departamentos[];
 }

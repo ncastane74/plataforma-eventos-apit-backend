@@ -1,7 +1,10 @@
 import { Column,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import { Departamentos } from './ext-departamentos.entity';
 
 @Entity()
 export class Municipios {
@@ -9,8 +12,8 @@ export class Municipios {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'int' })
-  id_departamento: number;
+  @ManyToOne(() => Departamentos, departamento => departamento.municipios)
+  departamentos: Departamentos;
 
   @Column({
     type: 'varchar',

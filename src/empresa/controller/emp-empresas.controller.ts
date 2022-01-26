@@ -14,8 +14,6 @@ import {
 
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
-import { CreateEmpresasPonentesDto } from '../dtos/emp-empresas-ponentes.dtos';
-
 import {
   CreateEmpresasDto,
   UpdateEmpresasDto,

@@ -1,19 +1,19 @@
 import {
-  Body,
   Controller,
-  Delete,
   Get,
   Param,
-  Post,
-  Put,
+  ParseIntPipe,
   Query,
 } from '@nestjs/common';
 
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
+import { ExtMunicipiosService } from './../services/ext-municipios.service';
+
 @ApiTags('Municipio')
 @Controller('ext-municipios')
 export class ExtMunicipiosController {
+  constructor(private extMunicipiosService: ExtMunicipiosService) {}
 
   @Get()
   @ApiOperation({ summary: 'Listado los municipios' })
@@ -22,42 +22,38 @@ export class ExtMunicipiosController {
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return {
-      message: `Municipios limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
-    };
+    return this.extMunicipiosService.findAll();
   }
 
-  @Get(':municipioId')
+  @Get(':id')
   @ApiOperation({ summary: 'Buscar un minicipio por si ID' })
-  getMunicipio(@Param('municipioId') productId: string) {
-    return {
-      message: `Municipio ${productId}`,
-    };
+  getOne(@Param('id', ParseIntPipe) id: number) {
+    return this.extMunicipiosService.findOne(id);
   }
 
-  @Post()
-  @ApiOperation({ summary: 'Crea municipio' })
-  create(@Body() payload: any) {
-    return {
-      message: 'Metodo de crear',
-      payload,
-    };
-  }
+  // @Post()
+  // @ApiOperation({ summary: 'Crea municipio' })
+  // create(@Body() payload: any) {
+  //   return {
+  //     message: 'Metodo de crear',
+  //     payload,
+  //   };
+  // }
 
-  @Put(':id')
-  @ApiOperation({ summary: 'Actualiza un municipio por su ID' })
-  update(@Param('id') id: number, @Body() payload: any) {
-    return {
-      id,
-      payload,
-    };
-  }
+  // @Put(':id')
+  // @ApiOperation({ summary: 'Actualiza un municipio por su ID' })
+  // update(@Param('id') id: number, @Body() payload: any) {
+  //   return {
+  //     id,
+  //     payload,
+  //   };
+  // }
 
-  @Delete(':id')
-  @ApiOperation({ summary: 'Elimina un municipio por su ID' })
-  delete(@Param('id') id: number) {
-    return {
-      message: `ID elimnado ${id}`,
-    };
-  }
+  // @Delete(':id')
+  // @ApiOperation({ summary: 'Elimina un municipio por su ID' })
+  // delete(@Param('id') id: number) {
+  //   return {
+  //     message: `ID elimnado ${id}`,
+  //   };
+  // }
 }

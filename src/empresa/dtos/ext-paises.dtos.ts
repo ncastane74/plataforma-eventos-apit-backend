@@ -1,8 +1,10 @@
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreatePaisesDto {
+  
   @IsInt()
+  @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
   readonly id: number;

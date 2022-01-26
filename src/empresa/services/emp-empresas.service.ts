@@ -11,22 +11,6 @@ import { Empresas } from './../entities/emp-empresas.entity';
 @Injectable()
 export class EmpEmpresasService {
   constructor(@InjectRepository(Empresas) private empresasRepository: Repository<Empresas>){}
-  // private counterId = 1;
-  // private empresas: Empresas[] = [
-  //   {
-  //     id: 1,
-  //     nit: '91232356',
-  //     razon_social: 'Empresa Prueba',
-  //     id_municipio: 10,
-  //     direccion: 'calle 10 32 - 89',
-  //     telefono: '321-5654546',
-  //     estado: 1,
-  //     id_operario_creacion: 1,
-  //     id_operario_modificacion: 2,
-  //     f_creacion: '2021-12-21 10:35:00',
-  //     f_modificacion: '2021-12-22 11:35:00',
-  //   },
-  // ];
 
   findAll() {
     return this.empresasRepository.find();
