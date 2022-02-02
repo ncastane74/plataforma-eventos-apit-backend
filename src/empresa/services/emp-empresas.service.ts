@@ -6,11 +6,16 @@ import {
   CreateEmpresasDto,
   UpdateEmpresasDto,
 } from './../dtos/emp-empresas.dtos';
+
 import { Empresas } from './../entities/emp-empresas.entity';
+
+import { ExtPaisesService } from './ext-paises.service';
 
 @Injectable()
 export class EmpEmpresasService {
-  constructor(@InjectRepository(Empresas) private empresasRepository: Repository<Empresas>){}
+  constructor(@InjectRepository(Empresas) private empresasRepository: Repository<Empresas>,
+    private extPaisesService: ExtPaisesService,
+  ){}
 
   findAll() {
     return this.empresasRepository.find();
@@ -24,8 +29,12 @@ export class EmpEmpresasService {
     return empresa;
   }
 
-  create(data: CreateEmpresasDto) {
+   async create(data: CreateEmpresasDto) {
     const newEmpresa = this.empresasRepository.create(data);
+    if(data.id_municipio){
+      const municipio_id = await this.extPaisesService.findOne(data.id_municipio);
+      newEmpresa.municipio = municipio_id;
+    }
     return this.empresasRepository.save(newEmpresa);
   }
 

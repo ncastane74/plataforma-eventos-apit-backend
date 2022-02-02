@@ -14,11 +14,15 @@ export class ExtMunicipiosService {
     constructor(@InjectRepository(Municipios) private municipiosRepository: Repository<Municipios>){}
 
   findAll() {
-    return this.municipiosRepository.find();
+    return this.municipiosRepository.find({
+      relations: ['empresas']
+    });
   }
 
   async findOne(id: number) {
-    const municipioPon = await this.municipiosRepository.findOne(id);
+    const municipioPon = await this.municipiosRepository.findOne(id, {
+      relations: ['empresas']
+    });
     if (!municipioPon) {
       throw new NotFoundException(`Municipio #${id} not found`);
     }

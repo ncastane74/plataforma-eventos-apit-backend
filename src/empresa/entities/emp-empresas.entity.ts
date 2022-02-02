@@ -1,14 +1,13 @@
 import { Column,
   Entity,
+  ManyToOne,
 } from 'typeorm';
 
 import { BaseEntity } from '../../database/base.entity';
+import { Municipios } from './ext-municipios.entity';
 
 @Entity()
 export class Empresas extends BaseEntity{
-
-/*  @PrimaryGeneratedColumn()
-  id: number;*/
 
   @Column({
     type: 'varchar',
@@ -22,9 +21,6 @@ export class Empresas extends BaseEntity{
   })
   razon_social: string;
 
-  @Column({ type: 'int' })
-  id_municipio: number;
-
   @Column({
     type: 'varchar',
     length: 255
@@ -33,7 +29,7 @@ export class Empresas extends BaseEntity{
 
   @Column({
     type: 'varchar',
-    length: 255
+    length: 20
   })
   telefono: string;
 
@@ -46,15 +42,7 @@ export class Empresas extends BaseEntity{
   @Column({ type: 'int' })
   id_operario_modificacion: number;
 
-/*  @CreateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-  })
-  f_creacion: Date;
+  @ManyToOne(() => Municipios, (municipio) => municipio.empresas)
+  municipio: Municipios;
 
-  @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-  })
-  f_modificacion: Date ;*/
 }

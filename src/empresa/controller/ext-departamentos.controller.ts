@@ -27,7 +27,7 @@ export class ExtDepartamentosController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Busca departamento por su ID' })
-  getOne(@Param('id', ParseIntPipe) id: number) {
+  getOne(@Param('id',ParseIntPipe) id: number) {
     return this.extDepartamentosService.findOne(id);
   }
 
