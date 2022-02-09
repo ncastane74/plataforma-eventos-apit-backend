@@ -33,7 +33,7 @@ export class EmpEmpresasService {
     const newEmpresa = this.empresasRepository.create(data);
     if(data.id_municipio){
       const municipio_id = await this.extPaisesService.findOne(data.id_municipio);
-      newEmpresa.municipio = municipio_id;
+      // newEmpresa.municipio = municipio_id;
     }
     return this.empresasRepository.save(newEmpresa);
   }

@@ -7,48 +7,56 @@ import {
   Post,
   Put,
   Query,
+  HttpStatus,
+  HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common';
 
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+
+import {
+  CreateInstituciones,
+  UpdateInstituciones,
+} from './../dtos/ext-instituciones.dtos';
+
+import { ExtInstitucionesService } from './../services/ext-instituciones.service';
+
+@ApiTags('Instituciones')
 @Controller('ext-instituciones')
 export class ExtInstitucionesController {
+
+  constructor(private extInstitucionesService: ExtInstitucionesService) {}
   @Get()
   getInstituciones(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return {
-      message: `Instituciones limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
-    };
+    return this.extInstitucionesService.findAll();
   }
 
-  @Get(':institucionId')
-  getPerfil(@Param('institucionId') productId: string) {
-    return {
-      message: `Institucion ID ${productId}`,
-    };
+  @Get(':id')
+  @ApiOperation({ summary: 'Busca la institucion por el ID' })
+  @HttpCode(HttpStatus.ACCEPTED)
+  getOne(@Param('id', ParseIntPipe) id: number) {
+    return this.extInstitucionesService.findOne(id);
   }
 
   @Post()
-  create(@Body() payload: any) {
-    return {
-      message: 'Metodo de crear',
-      payload,
-    };
+  @ApiOperation({ summary: 'Crea institucion' })
+  create(@Body() payload: CreateInstituciones) {
+    this.extInstitucionesService.create(payload);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any) {
-    return {
-      id,
-      payload,
-    };
+  @ApiOperation({ summary: 'Actualiza insitucion' })
+  update(@Param('id') id: number, @Body() payload: UpdateInstituciones) {
+    return this.extInstitucionesService.update(id, payload);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Elimina institucion' })
   delete(@Param('id') id: number) {
-    return {
-      message: `ID elimnado ${id}`,
-    };
+    return this.extInstitucionesService.remove(id);
   }
 }

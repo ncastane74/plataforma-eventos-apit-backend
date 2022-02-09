@@ -1,34 +1,47 @@
-import { IsInt, IsNotEmpty, IsString, IsUrl } from 'class-validator';
-import { PartialType } from '@nestjs/swagger';
+import { IsInt, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { PartialType, ApiProperty } from '@nestjs/swagger';
 
 export class CreatePerfiles {
   @IsInt()
+  @IsNumber()
   @IsNotEmpty()
+  @ApiProperty()
   id: number;
 
   @IsInt()
+  @IsNumber()
   @IsNotEmpty()
+  @ApiProperty()
   estado: number;
 
   @IsString()
   @IsNotEmpty()
+  @ApiProperty()
   observacion: string;
 
   @IsInt()
+  @IsNumber()
   @IsNotEmpty()
+  @ApiProperty()
   id_operario_creacion: number;
 
   @IsInt()
+  @IsNumber()
   @IsNotEmpty()
+  @ApiProperty()
   id_operario_modificion: number;
 
   @IsString()
   @IsNotEmpty()
-  f_creacion: string;
+  @ApiProperty()
+  f_creacion: Date;
 
   @IsString()
   @IsNotEmpty()
-  f_modificacion: string;
+  @ApiProperty()
+  f_modificacion: Date;
 }
 
-export class UpdatePerfiles extends PartialType(CreatePerfiles) {}
+export class UpdatePerfiles extends PartialType(
+  CreatePerfiles,
+) {}

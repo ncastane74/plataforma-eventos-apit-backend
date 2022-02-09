@@ -7,48 +7,56 @@ import {
   Post,
   Put,
   Query,
+  HttpStatus,
+  HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common';
 
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+
+import {
+  CreatePersonas,
+  UpdatePersonas,
+} from './../dtos/per-personas.dtos';
+
+import { PerPersonasService } from './../services/per-personas.service';
+
+@ApiTags('Personas')
 @Controller('per-personas')
 export class PerPersonasController {
+
+  constructor(private perPersonasService: PerPersonasService) {}
   @Get()
   getPersonas(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return {
-      message: `Personas limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
-    };
+    return this.perPersonasService.findAll();
   }
 
-  @Get(':personaId')
-  getPersonaInt(@Param('personaId') productId: string) {
-    return {
-      message: `Persona ID ${productId}`,
-    };
+  @Get(':id')
+  @ApiOperation({ summary: 'Busca la persona por el ID' })
+  @HttpCode(HttpStatus.ACCEPTED)
+  getOne(@Param('id', ParseIntPipe) id: number) {
+    return this.perPersonasService.findOne(id);
   }
 
   @Post()
-  create(@Body() payload: any) {
-    return {
-      message: 'Metodo de crear',
-      payload,
-    };
+  @ApiOperation({ summary: 'Crea persona' })
+  create(@Body() payload: CreatePersonas) {
+    this.perPersonasService.create(payload);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any) {
-    return {
-      id,
-      payload,
-    };
+  @ApiOperation({ summary: 'Actualiza persona' })
+  update(@Param('id') id: number, @Body() payload: UpdatePersonas) {
+    return this.perPersonasService.update(id, payload);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Elimina persona' })
   delete(@Param('id') id: number) {
-    return {
-      message: `ID elimnado ${id}`,
-    };
+    return this.perPersonasService.remove(id);
   }
 }
